@@ -1,4 +1,4 @@
-from django.urls import path,include
+from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -10,9 +10,12 @@ from users import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserApiViewSet)
 
-urlpatterns=[
+urlpatterns = [
     path('', include(router.urls)),
-    #path('auth/me/', views.UserView.as_view()),
-    #path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Aqui pueden utilizar el nombre de auth/token/  o  auth/login/
-    #path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('auth/me/', views.UserView.as_view()),
+    path('auth/register/',
+         views.RegisterUserView.as_view({'post': 'create'}), name='register'),
+    # Aqui pueden utilizar el nombre de auth/token/  o  auth/login/
+    path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

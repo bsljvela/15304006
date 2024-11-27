@@ -1,14 +1,10 @@
 import { Login } from "../pages/common";
+import { useAuth } from "../hooks/useAuth";
 
 export function AdminLayout({ children }) {
-  const auth = null;
+  const { auth } = useAuth();
 
   if (!auth) return <Login />;
 
-  return (
-    <div>
-      <p>AdminLayout</p>
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 }

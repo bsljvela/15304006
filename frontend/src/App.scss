@@ -1,5 +1,6 @@
-/* LOGIN PAGEN START */
-.login-admin {
+/* LOGIN & REGISTER PAGEN START */
+.login-admin,
+.register-admin {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -24,7 +25,11 @@
         }
     }
 }
-/* LOGIN PAGE END*/
+
+.register-admin {
+    color:blue;
+}
+/* LOGIN & REGISTER PAGE END*/
 
 /* Override Semantic Components */
 .ui.input {
