@@ -17,6 +17,7 @@ import os
 
 # Carga las variables desde el archivo .env
 load_dotenv()
+...
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

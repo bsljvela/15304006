@@ -16,10 +16,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copiar el proyecto de Django
 COPY backend /app
 
-# Configurar la imagen para ejecutar Django
-#ENV PYTHONDONTWRITEBYTECODE 1
-#ENV PYTHONUNBUFFERED 1
-
 # Dar permisos de ejecución -rwxr-xr-x
 RUN chmod +x /app/backend-entrypoint.sh
 
