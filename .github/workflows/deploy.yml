@@ -64,8 +64,8 @@ jobs:
       - name: Move build files
         run: |
           # Mover archivos relevantes de Django
-          mkdir -p backend
-          cp -R backend/* backend
+          mkdir -p deploy/backend
+          cp -R backend/* deploy/backend
 
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
