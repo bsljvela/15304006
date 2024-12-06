@@ -28,6 +28,13 @@ jobs:
           npm install
           npm run build || (echo "Build failed!" && exit 1)
 
+      # 7. Preparar la rama de despliegue
+      - name: Prepare deploy branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan deploy
+          git reset --hard
       # - name: Move build files
       #   run: |
       #     # Mover archivos de React
@@ -51,15 +58,9 @@ jobs:
       # 6. Recolectar archivos estáticos de Django
       - name: Collect static files
         working-directory: backend
-        run: python manage.py collectstatic --noinput
-
-      # 7. Preparar la rama de despliegue
-      - name: Prepare deploy branch
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan deploy
-          git reset --hard
+          python manage.py collectstatic --noinput
+          mv backend/staticfiles/* ./staticfiles
 
       # 8. Mover los archivos generados al repositorio
       # - name: Move build files
@@ -88,9 +89,9 @@ jobs:
           echo "</IfModule>" >> .htaccess
 
       # 10. Mover los archivos estáticos de Django a la carpeta de despliegue
-      - name: Move Django static files
-        run: |
-          mv backend/staticfiles/* ./staticfiles
+      # - name: Move Django static files
+      #   run: |
+      #     mv backend/staticfiles/* ./staticfiles
 
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
