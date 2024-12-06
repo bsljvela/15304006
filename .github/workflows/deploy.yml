@@ -29,7 +29,6 @@ jobs:
       - name: Install and build React
         working-directory: frontend
         run: |
-          cd frontend
           npm install
           npm run build || (echo "Build failed!" && exit 1)
 
