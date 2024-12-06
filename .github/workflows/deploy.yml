@@ -58,9 +58,9 @@ jobs:
       - name: Move build files
         run: |
           # Mover archivos de React
-          mv frontend/dist deploy/frontend-build
+          mv dist frontend
           # Mover archivos relevantes de Django
-          cp -R backend/* deploy/backend
+          cp -R backend/* backend
 
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
