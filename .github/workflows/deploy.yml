@@ -31,8 +31,8 @@ jobs:
       - name: Move build files
         run: |
           # Mover archivos de React
-          mkdir -p deploy/static/react
-          mv frontend/dist deploy/static/react
+          mkdir -p deploy/frontend
+          mv frontend/dist deploy/frontend
 
       # 4. Configurar Python para Django
       - name: Set up Python
@@ -64,8 +64,8 @@ jobs:
       - name: Move build files
         run: |
           # Mover archivos relevantes de Django
-          mkdir -p deploy
-          cp -R backend/* deploy
+          mkdir -p deploy/backend
+          cp -R backend/* deploy/backend
 
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
