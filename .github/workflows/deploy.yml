@@ -25,7 +25,7 @@ jobs:
       - name: List files before build
         run: |
           cd ../../frontend
-          ls -la
+          ls
       - name: Install and build React
         working-directory: frontend
         run: |
@@ -36,7 +36,7 @@ jobs:
       - name: List files after build
         run: |
           cd ../../frontend
-          ls -la
+          ls
 
       # 4. Configurar Python para Django
       - name: Set up Python
