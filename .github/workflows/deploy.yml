@@ -90,6 +90,7 @@ jobs:
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
         run: |
+          cd ./
           git add .
           git commit -m "Deploy build $(date)"
           git push --force origin deploy
