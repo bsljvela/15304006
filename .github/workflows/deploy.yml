@@ -32,7 +32,6 @@ jobs:
         run: |
           # Mover archivos de React
           mkdir -p frontend
-          mkdir -p backend/static
           mv frontend/dist/* .
 
       # 4. Configurar Python para Django
