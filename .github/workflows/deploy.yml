@@ -25,6 +25,7 @@ jobs:
       - name: Install and build React
         working-directory: frontend
         run: |
+          cd frontend
           npm install
           npm run build
 
@@ -38,6 +39,7 @@ jobs:
       - name: Install Django dependencies
         working-directory: backend
         run: |
+          cd backend
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
@@ -58,9 +60,9 @@ jobs:
       - name: Move build files
         run: |
           # Mover archivos de React
-          mv dist frontend
+          mv frontend/dist deploy/frontend-build
           # Mover archivos relevantes de Django
-          cp -R backend/* backend
+          cp -R backend/* deploy/backend
 
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
