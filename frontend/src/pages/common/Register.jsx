@@ -68,7 +68,7 @@ export function Register() {
             error={formik.errors.password_confirm}
             autoComplete="false"
           />
-          <Button type="submit" content="Iniciar Sesión" primary fluid />
+          <Button type="submit" content="Registrar" primary fluid />
         </Form>
       </div>
     </div>
