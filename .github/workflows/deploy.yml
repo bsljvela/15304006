@@ -21,27 +21,6 @@ jobs:
         with:
           node-version: 18
 
-      # 3. Instalar y construir el proyecto React
-      - name: List files before build
-        run: |
-          cd frontend
-          ls
-      - name: Install and build React
-        working-directory: frontend
-        run: |
-          npm install
-          npm run build || (echo "Build failed!" && exit 1)
-
-      - name: List files after build
-        run: |
-          cd frontend
-          ls
-      - name: Move build files
-        run: |
-          # Mover archivos de React
-          mkdir -p deploy/frontend-build
-          mv frontend/dist deploy/frontend-build
-
       # 4. Configurar Python para Django
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -72,8 +51,21 @@ jobs:
       - name: Move build files
         run: |
           # Mover archivos relevantes de Django
-          mkdir -p deploy/backend
-          cp -R backend/* deploy/backend
+          mkdir -p deploy
+          cp -R backend/* deploy
+
+      # 3. Instalar y construir el proyecto React
+      - name: Install and build React
+        working-directory: frontend
+        run: |
+          npm install
+          npm run build || (echo "Build failed!" && exit 1)
+
+      - name: Move build files
+        run: |
+          # Mover archivos de React
+          mkdir -p deploy/static/react
+          mv frontend/dist deploy/static/react
 
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
