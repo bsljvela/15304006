@@ -90,6 +90,6 @@ jobs:
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
         run: |
-          git add assets/* backend/* .htaccess
+          git add assets/* backend/* .htaccess index.html
           git commit -m "Deploy build $(date)"
           git push --force origin deploy
