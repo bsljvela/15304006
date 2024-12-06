@@ -74,7 +74,8 @@ jobs:
           # Copiar archivos generados de React y Django directamente a la rama deploy
           cp -R frontend/dist/* ./  # Copiar archivos estáticos de React al root de la rama deploy
           cp -R backend/* ./  # Copiar archivos de Django al root de la rama deploy
-
+          # Mover archivos estáticos de Django (colocados en STATIC_ROOT)
+          cp -R backend/static/* ./static
       # Crear el archivo .htaccess
       - name: Create .htaccess for React routing
         run: |
