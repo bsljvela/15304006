@@ -53,7 +53,8 @@ jobs:
         working-directory: backend
         run: |
           python manage.py collectstatic --noinput
-          mv /home/runner/work/15304006/15304006/backend/staticfiles/* ./static
+          mkdir backend
+          mv /home/runner/work/15304006/15304006/backend/staticfiles/* ./backend
 
       # 7. Preparar la rama de despliegue
       - name: Prepare deploy branch
