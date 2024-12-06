@@ -72,8 +72,8 @@ jobs:
       - name: Move build files to deploy branch
         run: |
           # Copiar archivos generados de React y Django directamente a la rama deploy
-          cp -R frontend/dist/* .  # Copiar archivos estáticos de React al root de la rama deploy
-          cp -R backend/* .  # Copiar archivos de Django al root de la rama deploy
+          cp -R frontend/dist/* ./  # Copiar archivos estáticos de React al root de la rama deploy
+          cp -R backend/* ./  # Copiar archivos de Django al root de la rama deploy
 
       # Crear el archivo .htaccess
       - name: Create .htaccess for React routing
