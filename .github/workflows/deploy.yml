@@ -39,6 +39,7 @@ jobs:
       - name: Move build files
         run: |
           # Mover archivos de React
+          mkdir -p deploy/frontend-build
           mv frontend/dist deploy/frontend-build
 
       # 4. Configurar Python para Django
