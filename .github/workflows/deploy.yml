@@ -24,18 +24,18 @@ jobs:
       # 3. Instalar y construir el proyecto React
       - name: List files before build
         run: |
-          cd frontend
+          cd ../../frontend
           ls -la
       - name: Install and build React
         working-directory: frontend
         run: |
-          cd frontend
+          cd ../../frontend
           npm install
           npm run build || (echo "Build failed!" && exit 1)
 
       - name: List files after build
         run: |
-          cd frontend
+          cd ../../frontend
           ls -la
 
       # 4. Configurar Python para Django
