@@ -78,14 +78,14 @@ jobs:
       # Crear el archivo .htaccess
       - name: Create .htaccess for React routing
         run: |
-          echo "<IfModule mod_rewrite.c>" > deploy/.htaccess
-          echo "RewriteEngine On" >> deploy/.htaccess
-          echo "RewriteBase /" >> deploy/.htaccess
-          echo "RewriteRule ^index\.html$ - [L]" >> deploy/.htaccess
-          echo "RewriteCond %{REQUEST_FILENAME} !-f" >> deploy/.htaccess
-          echo "RewriteCond %{REQUEST_FILENAME} !-d" >> deploy/.htaccess
-          echo "RewriteRule . index.html [L]" >> deploy/.htaccess
-          echo "</IfModule>" >> deploy/.htaccess
+          echo "<IfModule mod_rewrite.c>" > .htaccess
+          echo "RewriteEngine On" >> .htaccess
+          echo "RewriteBase /" >> .htaccess
+          echo "RewriteRule ^index\.html$ - [L]" >> .htaccess
+          echo "RewriteCond %{REQUEST_FILENAME} !-f" >> .htaccess
+          echo "RewriteCond %{REQUEST_FILENAME} !-d" >> .htaccess
+          echo "RewriteRule . index.html [L]" >> .htaccess
+          echo "</IfModule>" >> .htaccess
 
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
