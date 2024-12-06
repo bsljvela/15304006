@@ -39,7 +39,7 @@ jobs:
       - name: Move build files
         run: |
           # Mover archivos de React
-          mv frontend/build deploy/frontend-build
+          mv frontend/dist deploy/frontend-build
 
       # 4. Configurar Python para Django
       - name: Set up Python
@@ -71,7 +71,7 @@ jobs:
       - name: Move build files
         run: |
           # Mover archivos de React
-          mv frontend/build deploy/frontend-build
+          mv frontend/dist deploy/frontend-build
           # Mover archivos relevantes de Django
           cp -R backend/* deploy/backend
 
