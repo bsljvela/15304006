@@ -28,12 +28,12 @@ jobs:
           npm install
           npm run build || (echo "Build failed!" && exit 1)
 
-      - name: Move build files
-        run: |
-          # Mover archivos de React
-          mkdir -p deploy
-          mv frontend/dist/assets deploy/assets
-          mv frontend/dist/index.html deploy/index.html
+      # - name: Move build files
+      #   run: |
+      #     # Mover archivos de React
+      #     mkdir -p deploy
+      #     mv frontend/dist/assets deploy/assets
+      #     mv frontend/dist/index.html deploy/index.html
 
       # 4. Configurar Python para Django
       - name: Set up Python
@@ -62,11 +62,18 @@ jobs:
           git reset --hard
 
       # 8. Mover los archivos generados al repositorio
-      - name: Move build files
+      # - name: Move build files
+      #   run: |
+      #     # Mover archivos relevantes de Django
+      #     #mkdir -p deploy/backend
+      #     cp -R backend deploy
+
+      # 8. Mover los archivos generados directamente a la rama de deploy
+      - name: Move build files to deploy branch
         run: |
-          # Mover archivos relevantes de Django
-          #mkdir -p deploy/backend
-          cp -R backend deploy
+          # Copiar archivos generados de React y Django directamente a la rama deploy
+          cp -R frontend/dist/* .  # Copiar archivos estáticos de React al root de la rama deploy
+          cp -R backend/* .  # Copiar archivos de Django al root de la rama deploy
 
       # Crear el archivo .htaccess
       - name: Create .htaccess for React routing
