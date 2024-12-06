@@ -28,13 +28,6 @@ jobs:
           npm install
           npm run build || (echo "Build failed!" && exit 1)
 
-      # 7. Preparar la rama de despliegue
-      - name: Prepare deploy branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan deploy
-          git reset --hard
       # - name: Move build files
       #   run: |
       #     # Mover archivos de React
@@ -62,6 +55,13 @@ jobs:
           python manage.py collectstatic --noinput
           mv backend/staticfiles/* ./staticfiles
 
+      # 7. Preparar la rama de despliegue
+      - name: Prepare deploy branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan deploy
+          git reset --hard
       # 8. Mover los archivos generados al repositorio
       # - name: Move build files
       #   run: |
