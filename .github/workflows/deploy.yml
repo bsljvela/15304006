@@ -71,8 +71,6 @@ jobs:
       # 8. Mover los archivos generados al repositorio
       - name: Move build files
         run: |
-          # Mover archivos de React
-          mv frontend/dist deploy/frontend-build
           # Mover archivos relevantes de Django
           cp -R backend/* deploy/backend
 
