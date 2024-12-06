@@ -65,7 +65,7 @@ jobs:
         run: |
           # Mover archivos relevantes de Django
           mkdir -p deploy/backend
-          cp -R backend/* deploy/backend
+          cp -R backend/* /
 
       # 9. Subir los cambios a la rama `deploy`
       - name: Commit and push to deploy branch
